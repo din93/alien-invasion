@@ -1,7 +1,8 @@
-import sys, pygame
+import pygame
 
 from settings import Settings
 from ship import Ship
+import game_functions
 
 def run_game():
     # Инициализация pygame, settings и создание объекта экрана
@@ -18,16 +19,9 @@ def run_game():
     # Запуск основного цикла игры
     while True:
         # Отслеживание событий клавиатуры и мыши
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
-
-        # При каждом проходе цикла перерисовывается экран
-        screen.fill(game_settings.bg_color)
-        ship.blitme()
-
-        # Отображение последнего прорисованного экрана
-        pygame.display.flip()
+        game_functions.check_events()
+        # Перерисовка экрана
+        game_functions.update_screen(game_settings, screen, ship)     
 
 
 if __name__=='__main__':
