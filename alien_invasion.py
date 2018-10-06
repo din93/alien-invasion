@@ -14,12 +14,14 @@ def run_game():
     pygame.display.set_caption("Alien Invasion")
 
     # Создание корабля
-    ship = Ship(screen)
+    ship = Ship(game_settings, screen)
 
     # Запуск основного цикла игры
     while True:
         # Отслеживание событий клавиатуры и мыши
-        game_functions.check_events()
+        game_functions.check_events(ship)
+        # Обновление позиции корабля
+        ship.update()
         # Перерисовка экрана
         game_functions.update_screen(game_settings, screen, ship)     
 
